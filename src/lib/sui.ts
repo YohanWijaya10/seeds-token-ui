@@ -7,6 +7,7 @@ const network = process.env.NEXT_PUBLIC_SUI_NETWORK as
   | "devnet"
   | "testnet"
   | "mainnet";
+  
 const suiClient = new SuiClient({ url: getFullnodeUrl(network) });
 
 // Admin keypair (untuk server-side operations)
