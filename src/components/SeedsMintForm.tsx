@@ -82,7 +82,6 @@ export default function SeedsMintForm({ onMintSuccess }: SeedsMintFormProps) {
     <Card className="w-full max-w-md mx-auto">
       <CardHeader className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-t-lg">
         <CardTitle className="flex items-center gap-2">
-          <span className="text-2xl">⚡</span>
           Mint SEEDS Token
         </CardTitle>
       </CardHeader>
@@ -163,9 +162,7 @@ export default function SeedsMintForm({ onMintSuccess }: SeedsMintFormProps) {
           >
             {result.success ? (
               <div>
-                <p className="text-green-800 font-medium">
-                  ✅ Mint Successful!
-                </p>
+                <p className="text-green-800 font-medium">Mint Successful!</p>
                 <div className="text-sm text-green-700 mt-2 space-y-1">
                   <p>Amount: {result.data?.formattedAmount} SEEDS</p>
                   <p>Recipient: {result.data?.recipient.slice(0, 10)}...</p>
@@ -174,7 +171,7 @@ export default function SeedsMintForm({ onMintSuccess }: SeedsMintFormProps) {
               </div>
             ) : (
               <div>
-                <p className="text-red-800 font-medium">❌ Mint Failed</p>
+                <p className="text-red-800 font-medium">Mint Failed</p>
                 <p className="text-sm text-red-700 mt-1">{result.error}</p>
                 {result.details && (
                   <p className="text-xs text-red-600 mt-1">{result.details}</p>

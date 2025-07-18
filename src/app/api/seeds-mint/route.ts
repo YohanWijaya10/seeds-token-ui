@@ -67,8 +67,6 @@ export async function POST(request: Request) {
           amount: mintAmount,
           formattedAmount: amount,
           recipient,
-          effects: result.effects,
-          events: result.events,
         },
       });
     } else {

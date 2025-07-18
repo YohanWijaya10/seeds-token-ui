@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "SEEDS Token Dashboard",
-  description: "Monitor SEEDS token balance on Sui blockchain",
+  description: "Monitor and manage SEEDS tokens on Sui blockchain",
 };
 
 export default function RootLayout({

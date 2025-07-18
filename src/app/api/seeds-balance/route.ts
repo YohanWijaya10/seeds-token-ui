@@ -43,22 +43,3 @@ export async function GET() {
     );
   }
 }
-
-// API untuk mint token (contoh untuk testing)
-export async function POST(request: Request) {
-  try {
-    const { amount, recipient } = await request.json();
-
-    // Redirect ke dedicated mint API
-    return NextResponse.redirect("/api/seeds-mint");
-  } catch (error) {
-    return NextResponse.json(
-      {
-        success: false,
-        error: "Use /api/seeds-mint endpoint for minting",
-        details: error instanceof Error ? error.message : "Unknown error",
-      },
-      { status: 500 }
-    );
-  }
-}

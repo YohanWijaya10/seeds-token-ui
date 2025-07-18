@@ -3,11 +3,9 @@
 import { useState } from "react";
 import SeedsTokenBalance from "@/components/SeedsTokenBalance";
 import SeedsMintForm from "@/components/SeedsMintForm";
-import AdminDebugInfo from "@/components/AdminDebugInfo";
 
 export default function Home() {
   const [refreshTrigger, setRefreshTrigger] = useState(0);
-  const [showDebug, setShowDebug] = useState(false);
 
   const handleMintSuccess = () => {
     // Trigger balance refresh when mint succeeds
@@ -24,19 +22,7 @@ export default function Home() {
           <p className="text-gray-600">
             Monitor and manage your SEEDS tokens on Sui Devnet
           </p>
-          <button
-            onClick={() => setShowDebug(!showDebug)}
-            className="mt-2 px-3 py-1 text-xs bg-gray-200 text-gray-600 rounded hover:bg-gray-300 transition-colors"
-          >
-            {showDebug ? "Hide" : "Show"} Debug Info
-          </button>
         </div>
-
-        {showDebug && (
-          <div className="mb-8">
-            <AdminDebugInfo />
-          </div>
-        )}
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* Balance Card */}
