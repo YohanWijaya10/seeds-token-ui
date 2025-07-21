@@ -1,3 +1,4 @@
+// src/components/SeedsTokenBalance.tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -15,7 +16,13 @@ interface ApiResponse {
   error?: string;
 }
 
-export default function SeedsTokenBalance() {
+interface SeedsTokenBalanceProps {
+  onBalanceUpdate?: (balance: string) => void;
+}
+
+export default function SeedsTokenBalance({
+  onBalanceUpdate,
+}: SeedsTokenBalanceProps) {
   const [balance, setBalance] = useState<SeedsTokenBalanceType | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -26,16 +33,31 @@ export default function SeedsTokenBalance() {
       setLoading(true);
       setError(null);
 
+      console.log("🌱 Fetching balance..."); // Debug log
+
       const response = await fetch("/api/seeds-balance");
       const data: ApiResponse = await response.json();
 
       if (data.success && data.data) {
+        console.log("🌱 Balance fetched:", data.data.formattedBalance); // Debug log
+
         setBalance({
           balance: data.data.balance,
           formattedBalance: data.data.formattedBalance,
           decimals: data.data.decimals,
         });
         setLastUpdated(new Date());
+
+        // Notify parent component about balance update
+        if (onBalanceUpdate) {
+          console.log(
+            "🔄 Calling onBalanceUpdate with:",
+            data.data.formattedBalance
+          ); // Debug log
+          onBalanceUpdate(data.data.formattedBalance);
+        } else {
+          console.log("❌ onBalanceUpdate is undefined!"); // Debug log
+        }
       } else {
         throw new Error(data.error || "Failed to fetch balance");
       }
